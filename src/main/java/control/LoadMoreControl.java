@@ -14,6 +14,12 @@ import java.util.List;
 public class LoadMoreControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         DAO dao = new DAO();
@@ -70,12 +76,6 @@ public class LoadMoreControl extends HttpServlet {
                     "\n" +
                     "                    </div>");
         }
-
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

@@ -3,27 +3,31 @@ package control;
 import dao.DAO;
 import intity.Product;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "TestControl", value = "/test")
-public class TestControl extends HttpServlet {
+@WebServlet(name = "LoadMoreCIDControl", value = "/loadMoreCID")
+public class LoadMoreCIDControl extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cateID = request.getParameter("cid");
+        String amount = request.getParameter("exits");
         DAO dao = new DAO();
-        List<Product> list= dao.getAllProductByCateID(cateID);
+        List<Product> list= dao.get4ProductByCID(cateID,Integer.parseInt(amount));
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         for (Product p : list){
-            out.println("                    <div class=\"product col-6 col-lg-3 col-md-6 mb-4\">\n" +
+            out.println("<div class=\"product col-6 col-lg-3 col-md-6 mb-4\">\n" +
                     "\n" +
                     "                        <!--Card-->\n" +
                     "                        <div class=\"card\">\n" +

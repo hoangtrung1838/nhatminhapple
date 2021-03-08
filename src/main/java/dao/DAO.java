@@ -377,10 +377,43 @@ public class DAO {
         return list;
     }
 
+    public List<Product> get4ProductByCID(String cid,int amount){
+        List<Product> list = new ArrayList<>();
+        String query = "select * from product  where category_id =?  order by price desc" +
+                " limit 4 offset ?;";
+        try {
+            connection = DBContext.getConnection();// mở kết nối;
+            pStatement = connection.prepareStatement(query);
+            pStatement.setString(1,cid);
+            pStatement.setInt(2,amount);
+            rs = pStatement.executeQuery();
+            while (rs.next()) {
+                list.add(new Product(
+                        rs.getInt(1),
+                        rs.getString("name"),
+                        rs.getInt("memory"),
+                        rs.getString("color"),
+                        rs.getString("image"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("category_ID"),
+                        rs.getInt("sell_ID"),
+                        rs.getInt("is_new"),
+                        rs.getInt("is_sale"),
+                        rs.getInt("amount"))
+                );
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        for (Account product: dao.getAllAccount()){
+        for (Product product: dao.get4ProductByCID("1",0)){
             System.out.println(product);
         }
 //        System.out.println(dao.getOneProductByName("Iphone Xs MAx"));

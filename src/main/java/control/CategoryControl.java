@@ -15,7 +15,7 @@ public class CategoryControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cateID = request.getParameter("cid");
         DAO dao = new DAO();
-        List<Product> list= dao.getAllProductByCateID(cateID);
+        List<Product> list= dao.get4ProductByCID(cateID,0);
         request.setAttribute("tag",cateID);
         request.setAttribute("listAll",list);
         request.getRequestDispatcher("Home.jsp").forward(request,response);

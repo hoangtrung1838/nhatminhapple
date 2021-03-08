@@ -168,13 +168,13 @@
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
-                        <a class="nav-link ${(tag eq null)? "text-primary":""} " href="home">Tất cả
+                        <a id="allCategory" class="nav-link ${tag eq null?"text-primary":""}" href="home">Tất cả
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <c:forEach var="o" items="${a.allCategory}">
                         <li class="nav-item">
-                            <a class=" nav-link" id="${o.cid}" onclick="searchCategoryByAjax(${o.cid})" href="#">${o.cname}</a>
+                            <a name="categoryID" class="nav-link ${tag eq o.cid?"text-primary":""}" id="${o.cid}"  href="category?cid=${o.cid}">${o.cname}</a>
 <%--                            <input type="button" class="btn-link" value="${o.cname}">--%>
                         </li>
                     </c:forEach>
@@ -200,7 +200,7 @@
 
             <!--Grid row-->
             <div id="content" class=" row wow fadeIn">
-                <c:forEach var="o" begin="0" end="3" items="${listAll}">
+                <c:forEach var="o" items="${listAll}">
                     <!--Grid column-->
                     <div class="product col-6 col-lg-3 col-md-6 mb-4">
 
@@ -279,11 +279,22 @@
 <script>
         function loadMore(){
             var amount = document.getElementsByClassName("product").length;
+            var tag = "${tag}"
+            let link;
+
+            if(tag.length==0){
+                link="/NhatMinhApple4_war_exploded/loadMore";
+            }else {
+                link="/NhatMinhApple4_war_exploded/loadMoreCID";
+
+            }
+
             $.ajax({
-                url: "/NhatMinhApple4_war_exploded/loadMore",
-                type: "get",
+                url: link,
+                type: "post",
                 data:{
-                    exits: amount
+                    exits: amount,
+                    cid : "${tag}"
                 },
                 success: function (data){
                     var row =document.getElementById("content");
@@ -301,29 +312,11 @@
                 url: "/NhatMinhApple4_war_exploded/searchByAjax",
                 type: "post",
                 data: {
-                    input : ele.value,
+                    input : ele.value
                 },
                 success: function (data){
                     var row= document.getElementById("content");
                     row.innerHTML = data;
-                },
-                error: function (xhr){
-
-                }
-            });
-        }
-        function searchCategoryByAjax(category){
-            $.ajax({
-                url: "/NhatMinhApple4_war_exploded/test",
-                type: "post",
-                data: {
-                    cid : category,
-                },
-                success: function (data){
-                  var row = document.getElementById("content");
-                  row.innerHTML = data;
-                  var tag = document.getElementById(category);
-                  tag.className+=" text-primary";
                 },
                 error: function (xhr){
 
