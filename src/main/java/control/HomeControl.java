@@ -16,7 +16,7 @@ public class HomeControl extends HttpServlet {
         response.setContentType("text/html");
         DAO dao = new DAO();
 
-        List<Product> list = dao.getNext4Product(0);
+        List<Product> list = dao.getNext8Product(0);
         String servletName = request.getServletPath().replace("/","");
         System.out.println(servletName);
 //        String amount= request.getParameter("amount");

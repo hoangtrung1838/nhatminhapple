@@ -94,7 +94,6 @@
 <div class="container border mt-5 pt-5 mt-lg-5">
 
     <%--Form--%>
-<c:if test="${acc ne null&&acc.isAdmin==1}">
     <form>
         <table class="table table-striped table-bordered table-hover overflow-auto text-center">
             <nav class="navbar navbar-expand-lg navbar-dark text-dark bg-dark lighten mt-3 mb-5">
@@ -176,7 +175,6 @@
 
 <%--        table--%>
     </form>
-</c:if>
 <%--Form--%>
 
 

@@ -24,7 +24,7 @@ public class LoadMoreControl extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         DAO dao = new DAO();
         String amount = request.getParameter("exits");
-        List<Product> list = dao.getNext4Product(Integer.parseInt(amount));
+        List<Product> list = dao.getNext8Product(Integer.parseInt(amount));
 
         PrintWriter out = response.getWriter();
 

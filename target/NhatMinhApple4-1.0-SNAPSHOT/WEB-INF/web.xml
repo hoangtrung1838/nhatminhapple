@@ -20,6 +20,22 @@
         <url-pattern>/search</url-pattern>
         <http-method>POST</http-method>
     </servlet-mapping>
+    <filter>
+        <filter-name>filter</filter-name>
+        <filter-class>filter.Logger</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/productManager</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>accountFilter</filter-name>
+        <filter-class>filter.AccountFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>accountFilter</filter-name>
+        <url-pattern>/accountManager</url-pattern>
+    </filter-mapping>
 
     <welcome-file-list>
         <welcome-file>home</welcome-file>

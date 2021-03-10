@@ -22,7 +22,7 @@ public class LoadMoreCIDControl extends HttpServlet {
         String cateID = request.getParameter("cid");
         String amount = request.getParameter("exits");
         DAO dao = new DAO();
-        List<Product> list= dao.get4ProductByCID(cateID,Integer.parseInt(amount));
+        List<Product> list= dao.get8ProductByCID(cateID,Integer.parseInt(amount));
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();

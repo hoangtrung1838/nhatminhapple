@@ -21,7 +21,7 @@
     <div class="container wow fadeIn">
 
         <!-- Heading -->
-        <h2 class="my-5 h2 text-center">Checkout form</h2>
+        <h2 class="my-5 h2 text-center">Thanh toán</h2>
 
         <!--Grid row-->
         <div class="row">
@@ -44,7 +44,7 @@
                                 <!--firstName-->
                                 <div class="md-form ">
                                     <input type="text" id="firstName" class="form-control">
-                                    <label for="firstName" class="">First name</label>
+                                    <label for="firstName" class="">Họ</label>
                                 </div>
 
                             </div>
@@ -56,7 +56,7 @@
                                 <!--lastName-->
                                 <div class="md-form">
                                     <input type="text" id="lastName" class="form-control">
-                                    <label for="lastName" class="">Last name</label>
+                                    <label for="lastName" class="">Tên</label>
                                 </div>
 
                             </div>
@@ -82,7 +82,7 @@
                         <!--address-->
                         <div class="md-form mb-5">
                             <input type="text" id="address" class="form-control" placeholder="1234 Main St">
-                            <label for="address" class="">Address</label>
+                            <label for="address" class="">Địa chỉ</label>
                         </div>
 
                         <!--address-2-->
@@ -97,7 +97,7 @@
                             <!--Grid column-->
                             <div class="col-lg-4 col-md-12 mb-4">
 
-                                <label for="country">Country</label>
+                                <label for="country">Thành phố</label>
                                 <select class="custom-select d-block w-100" id="country" required>
                                     <option value="">Choose...</option>
                                     <option>United States</option>

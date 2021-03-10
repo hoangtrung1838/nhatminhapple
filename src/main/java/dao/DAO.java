@@ -236,9 +236,9 @@ public class DAO {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getInt(6)
+                    rs.getInt(6)
                 );
-            }
+        }
             connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -344,10 +344,10 @@ public class DAO {
         return list;
     }
 
-    public List<Product> getNext4Product(int amount){
+    public List<Product> getNext8Product(int amount){
         List<Product> list = new ArrayList<>();
         String query = "select * from nhatminhapple.product  order by price desc\n" +
-                "limit 4 \n" +
+                "limit 8 \n" +
                 "offset ?;";
         try {
             connection = DBContext.getConnection();// mở kết nối;
@@ -377,10 +377,10 @@ public class DAO {
         return list;
     }
 
-    public List<Product> get4ProductByCID(String cid,int amount){
+    public List<Product> get8ProductByCID(String cid,int amount){
         List<Product> list = new ArrayList<>();
         String query = "select * from product  where category_id =?  order by price desc" +
-                " limit 4 offset ?;";
+                " limit 8 offset ?;";
         try {
             connection = DBContext.getConnection();// mở kết nối;
             pStatement = connection.prepareStatement(query);
@@ -413,7 +413,7 @@ public class DAO {
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        for (Product product: dao.get4ProductByCID("1",0)){
+        for (Product product: dao.get8ProductByCID("1",0)){
             System.out.println(product);
         }
 //        System.out.println(dao.getOneProductByName("Iphone Xs MAx"));
